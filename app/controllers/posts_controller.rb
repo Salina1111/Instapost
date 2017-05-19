@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
 	before_action :authenticate_user!, only: [:new , :create]
 	before_action :is_owner?, only: [:edit, :update]
+	before_action :is_owner?, only: [:edit, :update, :destroy]
 	def create
   		@post = current_user.posts.create(post_params)
   		if @post.valid?
@@ -33,6 +34,12 @@ class PostsController < ApplicationController
 		end
 	end
 
+	def destroy
+		@post = Post.find(params[:id])
+		@post.destroy
+		redirect_to root_path
+	end
+
 	private
 	def post_params
 		params.require(:post).permit(:user_id, :photo, :description)
@@ -40,7 +47,7 @@ class PostsController < ApplicationController
 
 	def is_owner?
 		redirect_to root_path if Post.find(params[:id]).user != current_user
-		end
+		
 	end
 
 end
