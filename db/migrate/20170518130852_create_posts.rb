@@ -4,7 +4,7 @@ class CreatePosts < ActiveRecord::Migration[5.0]
     	t.string :photo
     	t.text :description
     	t.integer :user_id
-    	t.timestamps null :false
+    	t.timestamps  :false
 
     end
     add_index :posts, :user_id
