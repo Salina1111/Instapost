@@ -9,6 +9,7 @@ class CommentsController < ApplicationController
 			flash[:alert] = "Invalid attributes."
 			redirect_to root_path
 		end
+	end
 	private
 
 	def comment_params
