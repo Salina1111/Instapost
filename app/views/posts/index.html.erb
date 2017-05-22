@@ -3,22 +3,22 @@
   <%= post.user.name %>
   <%= image_tag post.photo %>
   <%= post.description %>
-  <%= image_tag post.user.photo %>
 
-  	<% if post.user == current_user %>
-  	<%= link_to 'Edit Post', edit_posts_path(post.id) %>
-  	<%= link_to 'Delete Post', posts_path(post.id), method: :delete %>
+	<% if post.user == current_user %>
+	  	<%= link_to 'Edit Post', edit_post_path(post.id) %>
+	  	<%= link_to 'Delete Post', post_path(post.id), method: :delete %>
 	<% end %>
 
 	<% post.comments.each do |comment| %>
-	<p> <%= comment.user.name %> <%= comment.text%> </p>
+		<p> <%= comment.user.name %> <%= comment.text%> </p>
+		<%= link_to 'Delete Comment', post_comment_path(post_id: post.id, id: comment.id), method: :delete %>
 	<% end %>
 
 	<% if user_signed_in? %>
-	<%= simple_form_for Comment.new, url: posts_comments_path(post), method: :post do |f| %>
-    <%= f.input :text, label: 'Comment', placeholder: 'Add a Comment..' %>
-    <%= f.submit 'Post', class: 'btn btn-primary btn-block' %>
-  	<% end %>
-  	<% end %>
+		<%= simple_form_for Comment.new, url: post_comments_path(post.id), method: :post do |f| %>
+		    <%= f.input :text, label: 'Comment', placeholder: 'Add a Comment..' %>
+		    <%= f.submit 'Post', class: 'btn btn-primary btn-block' %>
+	  	<% end %>
+		<% end %>
 
 <%end %>
