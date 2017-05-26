@@ -1,16 +1,120 @@
-body {
-	background-color : #FAFAFA;
+body{
+  background-color: #fafafa;
+
 }
 
-nav {
-  border-bottom: 1px solid #dbdbdb;
-   background-color: #ffffff;
-   height: 76px;
+nav{
+  border-bottom: 1px solid #ddbdb;
+  background-color: #ffffff;
+  height: 76px;
 }
 
-
-.brand {
+.brand{
   font-family: 'Satisfy', cursive;
   font-size: 26px;
   vertical-align: middle;
+
+}
+
+.nav_links {
+  vertical-align: middle;
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0 20px;
+}
+
+.nav_wrapper {
+  line-height: 78px;
+}
+
+.photo {
+  width: 100%;
+  max-height: 100%;
+  
+}
+
+.post_box {
+  background-color: white;
+  border: 1px solid #edeeee;
+  border-radius: 3px;
+  margin: 60px 0px;
+  margin-left: -1px;
+  margin-right: -1px;
+}
+
+.post_header{
+  height: 64px;
+  padding: 14px 20px;
+  font-weight: 600;
+}
+
+.post_body{
+  padding: 10px 24px 0px 24px;
+}
+
+.post_comments {
+  padding: 10px 25px;
+
+}
+
+.timestamp {
+  color: #a5a7aa;
+  font-weight: 500;
+}
+
+
+
+.prof_header{
+  height: 100%;
+  padding: 60px 20px 0px;
+  margin-bottom: 45px;
+}
+
+.username {
+  color: #4b4f54;
+  font-weight: 300;
+  font-size: 34px;
+  line-height: 40px;
+}
+
+.count{
+  color: #34373b;
+  font-weight: 600;
+}
+
+.prof_show {
+  width: 350px ;
+  height: 350px ;
+  margin-top: 30px;
+
+
+}
+
+.prof_post_box {
+  margin-bottom: 50px;
+  padding-left: 10px;
+
+}
+
+.user_edit_button {
+  margin-top: 25px;
+  border-color: #818488;
+  color: #818488;
+}
+
+.prof_pic {
+  border-radius: 50%;
+  height: 150px;
+  width: 150px;
+}
+
+.prof_pic_small {
+  border-radius: 50%;
+  height: 28px;
+  width: 28px;
+}
+
+.design{
+  height: 40px;
+  width : 700px !important;
 }
