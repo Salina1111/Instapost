@@ -5,5 +5,5 @@ class Post < ApplicationRecord
 	mount_uploader :photo, PhotoUploader
 
 	validates :photo, :description, :user_id, presence: true
-	act_as_votable
+	acts_as_votable
 end
