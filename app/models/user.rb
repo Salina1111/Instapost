@@ -10,6 +10,6 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
 
-  act_as_voter
+  acts_as_voter
   
 end
