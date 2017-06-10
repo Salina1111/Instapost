@@ -31,12 +31,14 @@
 								<% else %>
 								<%= link_to '<i class="fa fa-heart-o" aria-hidden="true"></i>'.html_safe, post_upvotes_path(post.id), method: :post%>
 							<% end %>
-							
+
 								<%= pluralize post.get_likes.size, "like" %>
   						</span>
 							
 					<% else %>
+						<span class = "post_like" >
 						<i class="fa fa-heart-o" aria-hidden="true"></i> <%= pluralize post.get_likes.size, "like" %>
+						</span>
 
 					<% end %>
 
@@ -51,6 +53,8 @@
 
 
 		      <hr>
+
+		      		<%= render partial: 'likes', locals: {post: post} %>
 
 			      <% if user_signed_in? %>
 				        <%= simple_form_for Comment.new, url: post_comments_path(post), method: :post, html: { class: 'form-horizontal' }  do |f| %>
