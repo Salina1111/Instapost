@@ -24,9 +24,9 @@
                 <%= link_to 'EDIT PROFILE', edit_user_registration_path(@user), class: 'user_edit_button btn btn-default' if user_signed_in? && @user == current_user %>
               <% else %>
                   <%  if current_user_is_following(current_user.id, @user.id) %>
-                    <%= link_to 'Following' , unfollow_user_path(@user), class: 'btn unfollow-button',id: 'unfollow-button',method: :post%>
+                    <%= link_to 'Following' , unfollow_user_path(@user), class: 'btn unfollow-button',id: 'unfollow-button',method: :post,remote: true%>
                   <% else %>
-                    <%= link_to 'Follow' , follow_user_path(@user), class: 'btn follow-button',id:'follow-button', method: :post %>
+                    <%= link_to 'Follow' , follow_user_path(@user), class: 'btn follow-button',id:'follow-button', method: :post,remote: true%>
                   <% end %>
               <% end %>
 
