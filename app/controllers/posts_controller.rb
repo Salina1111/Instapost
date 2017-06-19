@@ -19,9 +19,9 @@ class PostsController < ApplicationController
 
 	def index
 		if user_signed_in?
-			@posts = Post.all.order('created_at DESC').paginate(page: params[:page],per_page: 3)
+			@posts = Post.all.order('created_at DESC').includes(:user, comments: :user).paginate(page: params[:page],per_page: 3)
 		else
-			@posts = Post.all.order('created_at DESC').paginate(page: params[:page])
+			@posts = Post.all.order('created_at DESC').includes(:user, comments: :user).paginate(page: params[:page])
 		end
 	end
 
