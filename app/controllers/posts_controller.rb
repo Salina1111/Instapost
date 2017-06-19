@@ -18,8 +18,12 @@ class PostsController < ApplicationController
 	end
 
 	def index
-		@posts = Post.all.order("created_at DESC")
-	end 
+		if user_signed_in?
+			@posts = Post.all.order('created_at DESC').paginate(page: params[:page],per_page: 3)
+		else
+			@posts = Post.all.order('created_at DESC').paginate(page: params[:page])
+		end
+	end
 
 	def edit
 		@post = Post.find(params[:id])
@@ -49,6 +53,10 @@ class PostsController < ApplicationController
 	end
 
 	def downvote
+	end
+
+	def browse
+		@posts= Post.all.order('created_at DESC').paginate(page: params[:page],per_page:3)
 	end
 
 	private

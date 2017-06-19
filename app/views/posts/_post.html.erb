@@ -1,0 +1,74 @@
+<div class="row">
+	<div class="col-md-3"></div>
+	
+	<div class="col-md-6">
+		<div class="panel panel-default">
+		
+		<div class="post_box">
+
+
+		    <div class="post_header">
+		      <%= image_tag post.user.photo, class: 'prof_pic_small' %>
+		      <%= link_to post.user.name, user_path(post.user_id) %>
+			      <span class="timestamp pull-right"><%= distance_of_time_in_words(DateTime.now, post.created_at) %> ago
+			      </span>
+		    </div>
+
+		    <%= image_tag post.photo, class: 'photo' %>
+		    
+		    <div class="post_body">
+
+		      <%= link_to post.user.name, user_path(post.user_id) %> <%= post.description %>
+
+		    </div>
+		    <% if user_signed_in? %>
+						
+						<span class="post_like">
+
+							<% if current_user.voted_up_on? post %>
+								<%= link_to '<i class="fa fa-heart" aria-hidden="true"></i>'.html_safe, post_downvotes_path(post.id), method: :post %>
+								<% else %>
+								<%= link_to '<i class="fa fa-heart-o" aria-hidden="true"></i>'.html_safe, post_upvotes_path(post.id), method: :post%>
+							<% end %>
+
+								<%= pluralize post.get_likes.size, "like" %>
+  						</span>
+							
+					<% else %>
+						<span class = "post_like" >
+						<i class="fa fa-heart-o" aria-hidden="true"></i> <%= pluralize post.get_likes.size, "like" %>
+						</span>
+
+					<% end %>
+
+		    <div class="post_comments">
+
+		      <% post.comments.each do |comment| %>
+
+		        <%= link_to comment.user.name,  user_path(comment.user_id) %> <%= comment.text %><br>
+
+		      <% end %>
+
+
+
+		      <hr>
+
+		      		<%= render partial: 'likes', locals: {post: post} %>
+
+			      <% if user_signed_in? %>
+				        <%= simple_form_for Comment.new, url: post_comments_path(post), method: :post, html: { class: 'form-horizontal' }  do |f| %>
+				          <%= f.input :text, label: 'Comment', placeholder: 'Add a comment...' %>
+				          <%= f.submit 'Post', class: 'btn btn-primary btn-block' %>
+				          
+				           
+						<% end %>
+			      <% end %>
+
+
+		    </div>
+		</div>
+	</div>
+	</div>
+
+	<div class="col-md-3"></div>
+</div>	  

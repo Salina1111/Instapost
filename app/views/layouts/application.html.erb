@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Instapost</title>
+     <title>Share Your Photos Online-Instapost</title>
+      <%= favicon_link_tag 'ig.png' %>
       <%= csrf_meta_tags %>
 
       <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
       <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
       <link href='https://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
+
+      
   </head>
 
 <body>
@@ -19,10 +22,11 @@
 
         <div class="col-md-4">
 
-          <span class="pull-left brand"><%= link_to 'Instapost', root_path %></span>
+          <span class="pull-left brand fa fa-instagram fa-3x" ><%= link_to '  Instapost', browse_posts_path %></span>
+
         </div>
 
-        <div class='col-md-3'>
+        <div class='col-md-2'>
         <!-- search box -->
           <div class="input-group stylish-input-group">
           <input type="text" class="form-control"  placeholder="Search" >
@@ -34,9 +38,10 @@
           </div>
         </div>
 
-        <div class= 'col-md-5'>
+        <div class= 'col-md-6'>
           <ul class = "nav nav-tabs pull-right">
           <% if user_signed_in? %>
+            <span class="nav_links"><%= link_to 'Browse Posts', browse_posts_path %></span> 
             <span class="nav_links"><%= link_to 'New Post', new_post_path %></span>
             <span class="nav_links"><%= link_to 'Edit Settings', edit_user_registration_path %></span>
             <span class="nav_links"><%= link_to 'Log Out', destroy_user_session_path, method: :delete %></span>

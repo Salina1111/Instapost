@@ -46,6 +46,8 @@ gem 'acts_as_votable', '~> 0.10.0'
 
 gem 'font-awesome-sass', '~> 4.6.2'
 
+gem 'will_paginate'
+
 group :development, :test do
   gem 'pry-rails'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
